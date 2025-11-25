@@ -6,7 +6,7 @@ import { useCadastro } from "../hooks/useCadastro";
 import "./page.css";
 
 export default function Cadastro() {
-  const { form, handleChange, handleRegister } = useCadastro();
+  const { form, handleChange, handleRegister, isChecked, handleCheckboxChange } = useCadastro();
 
   return (
     <main className="cadastro">
@@ -61,9 +61,15 @@ export default function Cadastro() {
           </div>
 
           <div className="cadastro-termos">
-            
-            <p>Declaro que li, compreendi e aceito integrantes os</p>
-            <a href="/termos">Termos de Uso</a>
+              <label>
+                <input
+                  type="checkbox"
+                  checked={isChecked}
+                  onChange={handleCheckboxChange}
+                />
+              Declaro que li, compreendi e aceito integrantes os
+              <a href="/termos">Termos de Uso</a>
+              </label>
           </div>
 
           <div className="cadastro-button">

@@ -11,12 +11,16 @@ export function usePropriedade() {
 
   useEffect(() => {
     api.get<Propriedade[]>('/propriedades/').then(response => {
+      console.log('Propriedades recebidas:', response.data);
       setPropriedades(response.data);
-    });
+    })
+      .catch((error) => {
+        console.error('Erro ao carregar propriedades:', error);
+      });
   }, []);
 
 
-  const handleAdd = () => router.push('/propriedades/cadastro'); 
+  const handleAdd = () => router.push('/propriedades/cadastro');
   const handleEdit = (id: number) => router.push(`/propriedades/editar/${id}`);
 
   return { propriedades, handleAdd, handleEdit };

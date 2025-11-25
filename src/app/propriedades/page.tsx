@@ -2,12 +2,15 @@
 
 import Image from "next/image";
 import "./page.css";
+import { useState } from "react";
 
 import { withAuth } from '../components/withAuth';
 import { usePropriedade } from '../hooks/usePropriedade';
+import Cards from "../components/Cards";
 
 function PaginaPropriedade() {
-  const { handleAdd } = usePropriedade();
+  const { propriedades, handleAdd } = usePropriedade();
+  const [searchTerm, setSearchTerm] = useState("");
   return (
     <main className="inicio">
       <nav className="inicio-nav">
@@ -18,15 +21,28 @@ function PaginaPropriedade() {
           height={170}
           className="logo"
         />
-        <h1>Minhas Propriedades</h1>
+        <h1>
+          Minhas Propriedades
+        </h1>
       </nav>
       <div className="inicio-content">
         <form className="inicio-form">
-          <input type="text" placeholder="Pesquisar" />
+          <input type="text" placeholder="Pesquisar" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
         </form>
+
+        <section className="cards-list">
+          {propriedades
+            .filter((p) =>
+              p.nomePropriedade.toLowerCase().includes(searchTerm.toLowerCase())
+            )
+            .map((p) => (
+              <div key={p.id} className="card-wrapper">
+                <Cards idPropriedade={p.id} />
+              </div>
+            ))}
+        </section>
       </div>
 
-      
 
       <footer className="footer">
         <Image
@@ -34,14 +50,14 @@ function PaginaPropriedade() {
           alt="home"
           width={50}
           height={50}
-          className="home"
+          className="clique"
         />
         <Image
           src="/plus.png"
           alt="plus"
           width={50}
           height={50}
-          className="plus"
+          className="clique"
           onClick={handleAdd}
         />
         <Image
@@ -49,11 +65,12 @@ function PaginaPropriedade() {
           alt="perfil"
           width={50}
           height={50}
-          className="perfil"
+          className="clique"
         />
       </footer>
     </main>
   );
 }
+
 
 export default withAuth(PaginaPropriedade);

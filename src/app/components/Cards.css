@@ -1,92 +1,76 @@
-.cards-section {
-  padding: 1.5rem;
+.cards {
+    background-color: #0097B2;
+    color: white;
+    width: 300px;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-direction: column;
 }
 
-.card-info{
+.card-header {
     display: flex;
     align-items: center;
-    width: 100%;
-    justify-content: space-between
+    justify-content: center;
+
 }
 
-.card-info img{
-    height: 20px;
+.card-header span {
+    font-size: 1.2rem;
+    margin: 0;
+    padding-bottom: 10px;
+    text-align: center;
+    font-weight: 800;
 }
 
-.card-title {
-  text-align: center;
-  font-weight: 800;
-  margin-left: 80px;
-}
-
-.cards-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem; 
-  margin-bottom: 2.5rem; 
-  color: white;
-}
-
-.card {
-  width: 18rem; 
-  background: #0097B2;
-  border-radius: 25px; 
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-.card-content {
-  padding: 1rem;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.card-description {
-  font-size: 0.875rem;
-  margin-top: 0.25rem;
-  margin-left: 2rem;
-}
-
-.card-text {
-  text-align: justify;
-  display: flex;
-  flex-direction: column;
-}
-
-.card-button {
-  background: rgba(255, 255, 255, 0.604);
-  color: #0097B2;
-  text-align: center;
-  padding: 0.5rem;
-  border-radius: 25px;
-  font-weight: bold;
-  margin: 0.75rem;
-  cursor: pointer;
-  border: none;
-}
-
-.card-button:hover {
-  background: #ffffff; 
-}
-
-.card-subinfo{
+.card-content{
     display: flex;
-    align-items: center;
-    justify-content:flex-start;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
 }
 
-.card-subinfo img{
-    height: 25px;
-}
-
-.card-details{
+ul {
+    list-style: none;
+    padding-left: 0;
     display: flex;
     flex-direction: column;
-    align-self: start;
+}
+
+ul li {
+    margin-bottom: 15px;
+}
+
+.juncao {
+    display: flex;
+}
+
+.desc{
+    width: 100%;
+    display: block;
+    text-align: left;
+    padding-left: 20px;
+}
+
+/* Estilo do botão */
+.card-btn {
+    background-color: rgba(255, 255, 255, 0.81);
+    color: #0097B2;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 20px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.35);
 }
