@@ -1,11 +1,17 @@
-'use client';
-import Image from "next/image";
-import "./Formulario.css";
+'use client'
 
 import { useFormSensor } from '../hooks/useFormSensor';
+import Image from "next/image";
+import "./FormularioSensor.css";
 
-export default function FormularioSensor({ id }: { id?: string }) {
-    const { form, isEditMode, plantacoes, handleChange, handleSubmit } = useFormSensor(id);
+export default function FormularioSensor({ id, propriedadeId }: { id?: string, propriedadeId?: string }) {
+    const { form, isEditMode, plantacoes, handleChange, handleSubmit, handleDelete } = useFormSensor(id);
+
+    // Filtra as plantações pela propriedadeId, se fornecido
+    const plantacoesFiltradas = propriedadeId
+        ? plantacoes.filter(localizacao => String(localizacao.propriedade.id) === String(propriedadeId))
+        : plantacoes;
+
 
     return (
         <main className='formulario'>
@@ -24,44 +30,64 @@ export default function FormularioSensor({ id }: { id?: string }) {
                 </nav>
                 <div className="formulario-content">
                     <div className="formulario-form">
-                        <div className="formulario-input">
-
+                        <div className="formulario-perfil">
                             <div className="separar">
                                 <label htmlFor="tipoSensor">Tipo Sensor</label>
-                                <input type="text" name="tipoSensor" value={form.tipoSensor} onChange={handleChange} required />
+                                <input
+                                    type="text"
+                                    name="tipoSensor"
+                                    value={form.tipoSensor}
+                                    onChange={handleChange}
+                                    required
+                                />
 
                                 <label htmlFor="codigo">Código</label>
-                                <input type="number" name="codigo" value={form.codigo} onChange={handleChange} required />
+                                <input
+                                    type="number"
+                                    name="codigo"
+                                    value={form.codigo}
+                                    onChange={handleChange}
+                                    required
+                                />
 
                                 <label htmlFor="localizacao">Localização</label>
-                                {plantacoes.map(localizacao => (
-                                    <select
-                                        name="localizacao"
-                                        value={form.localizacao}
-                                        onChange={handleChange}
-                                        required
-                                        key={localizacao.id}
-                                    >
-                                        {isEditMode ?
-                                            <option value={localizacao.id}>
-                                                {localizacao.cultura}
-                                            </option>
-                                            :
-                                            <>
-                                                <option value="">Selecione uma localização</option>
-                                                <option value={localizacao.id}>
+                                <select
+                                    name="localizacao"
+                                    value={form.localizacao}
+                                    onChange={handleChange}
+                                    required
+                                >
+                                    {isEditMode ? (
+
+                                        <option value={form.localizacao}>
+                                            {plantacoes.find(localizacao => localizacao.id === form.localizacao)?.cultura || 'Localização não encontrada'}
+                                        </option>
+                                    ) : (
+                                        <>
+                                            <option value="">Selecione uma localização</option>
+                                            {plantacoesFiltradas.map(localizacao => (
+                                                <option key={localizacao.id} value={localizacao.id}>
                                                     {localizacao.cultura}
                                                 </option>
-                                            </> }
-                                    </select>
-                                ))}
-
+                                            ))}
+                                        </>
+                                    )}
+                                </select>
                             </div>
 
                             <div className="formulario-button">
                                 <button type="submit" className="button">
                                     {isEditMode ? 'Salvar' : '+ Adicionar Plantação'}
                                 </button>
+                                {isEditMode && (
+                                    <button
+                                        type="button"
+                                        className="button delete"
+                                        onClick={() => { if (id) handleDelete(Number(id)); }}
+                                    >
+                                        Excluir
+                                    </button>
+                                )}
                             </div>
                         </div>
                     </div>
@@ -69,20 +95,24 @@ export default function FormularioSensor({ id }: { id?: string }) {
             </form>
 
             <footer>
-                <Image
-                    src="/home.png"
-                    alt="home"
-                    width={50}
-                    height={50}
-                    className="home"
-                />
-                <Image
-                    src="/perfil.png"
-                    alt="perfil"
-                    width={50}
-                    height={50}
-                    className="perfil"
-                />
+                <a href="/propriedades">
+                    <Image
+                        src="/home.png"
+                        alt="home"
+                        width={50}
+                        height={50}
+                        className="clique"
+                    />
+                </a>
+                <a href="/perfil/1">
+                    <Image
+                        src="/perfil.png"
+                        alt="perfil"
+                        width={50}
+                        height={50}
+                        className="clique"
+                    />
+                </a>
             </footer>
         </main>
     );

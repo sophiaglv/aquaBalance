@@ -5,7 +5,7 @@ import "./Formulario.css";
 import { useFormPropriedade } from '../hooks/useFormPropriedade';
 
 export default function FormularioPropriedade({ id }: { id?: string }) {
-    const { form, isEditMode, handleChange, handleSubmit, handleCancel, handleDelete } = useFormPropriedade(id);
+    const { form, isEditMode, handleChange, handleSubmit, handleCancel } = useFormPropriedade(id);
 
     return (
         <main className='formulario'>
@@ -52,37 +52,29 @@ export default function FormularioPropriedade({ id }: { id?: string }) {
                             <button type="submit" className="button">
                                 {isEditMode ? 'Salvar' : '+ Adicionar Propriedade'}
                             </button>
-                            {isEditMode && (
-                                <button
-                                    type="button"
-                                    className="button delete"
-                                    onClick={() => { if (id) handleDelete(Number(id)); }}
-                                >
-                                    Excluir
-                                </button>
-                            )}
                         </div>
                     </div>
                 </div>
             </form>
 
             <footer>
-                <a href="/propriedades">
-                    <Image
-                        src="/home.png"
-                        alt="home"
-                        width={50}
-                        height={50}
-                        className="home"
-                    />
-                </a>
                 <Image
-                    src="/perfil.png"
-                    alt="perfil"
+                    src="/home.png"
+                    alt="home"
                     width={50}
                     height={50}
-                    className="perfil"
+                    className="clique"
+                    onClick={handleCancel}
                 />
+                <a href="/perfil/1">
+                    <Image
+                        src="/perfil.png"
+                        alt="perfil"
+                        width={50}
+                        height={50}
+                        className="clique"
+                    />
+                </a>
             </footer>
         </main>
     );

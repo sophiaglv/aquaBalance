@@ -4,15 +4,16 @@ import "./Formulario.css";
 
 import { useFormPlantacao } from "../hooks/useFormPlantacao";
 
-export default function FormularioPlantacao({id}: {id?: string}) {
-    const { 
-        form, 
-        isEditMode, 
-        propriedades, 
-        handleChange, 
-        handleSubmit, 
-        handleDelete
-    } = useFormPlantacao(id); // <-- Faltava o ID
+export default function FormularioPlantacao({ id }: { id?: string }) {
+    const {
+        form,
+        isEditMode,
+        propriedades,
+        handleChange,
+        handleSubmit,
+        handleDelete,
+        handleCancel
+    } = useFormPlantacao(id);
 
     return (
         <main className='formulario'>
@@ -56,13 +57,13 @@ export default function FormularioPlantacao({id}: {id?: string}) {
                                 <input type="text" name="descricao" value={form.descricao} onChange={handleChange} required />
                             </div>
                             <div className="separar">
-                                <label htmlFor="tamanho">Tamanho</label>
+                                <label htmlFor="tamanho">Tamanho (ha)</label>
                                 <input type="number" name="tamanho" value={form.tamanho} onChange={handleChange} required />
 
-                                <label htmlFor="umidadeIdeal">Umidade Ideal</label>
+                                <label htmlFor="umidadeIdeal">Umidade Ideal (%)</label>
                                 <input type="number" name="umidadeIdeal" value={form.umidadeIdeal} onChange={handleChange} required />
 
-                                <label htmlFor="temperaturaIdeal">Temperatura Ideal</label>
+                                <label htmlFor="temperaturaIdeal">Temperatura Ideal (°C)</label>
                                 <input type="number" name="temperaturaIdeal" value={form.temperaturaIdeal} onChange={handleChange} required />
                             </div>
                         </div>
@@ -75,7 +76,7 @@ export default function FormularioPlantacao({id}: {id?: string}) {
                                 <button
                                     type="button"
                                     className="button delete"
-                                     onClick={() => { if (id) handleDelete(Number(id)); }}
+                                    onClick={() => { if (id) handleDelete(Number(id)); }}
                                 >
                                     Excluir
                                 </button>
@@ -91,15 +92,18 @@ export default function FormularioPlantacao({id}: {id?: string}) {
                     alt="home"
                     width={50}
                     height={50}
-                    className="home"
+                    className="clique"
+                    onClick={handleCancel}
                 />
-                <Image
-                    src="/perfil.png"
-                    alt="perfil"
-                    width={50}
-                    height={50}
-                    className="perfil"
-                />
+                <a href="/perfil/1">
+                    <Image
+                        src="/perfil.png"
+                        alt="perfil"
+                        width={50}
+                        height={50}
+                        className="clique"
+                    />
+                </a>
             </footer>
         </main>
     );

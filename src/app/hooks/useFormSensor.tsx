@@ -1,5 +1,3 @@
-'use client';
-
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Swal from 'sweetalert2';
@@ -7,19 +5,17 @@ import api from '../lib/api';
 import { SensorForm } from '@/types/sensorForm';
 import { Plantacao } from '@/types/plantacao';
 
-
 export function useFormSensor(id?: string) {
   const router = useRouter();
   const isEditMode = Boolean(id);
-  const [form, setForm] = useState<SensorForm>(
-    {
-      tipoSensor: '',
-      codigo: '',
-      localizacao: '', // O estado do formulário espera um ID simples
-    }
-  );
+  const [form, setForm] = useState<SensorForm>({
+    tipoSensor: '',
+    codigo: '',
+    localizacao: '', // Este campo vai manter o ID da plantação
+  });
   const [plantacoes, setPlantacoes] = useState<Plantacao[]>([]);
 
+  // Carrega as plantações
   useEffect(() => {
     api.get<Plantacao[]>('/plantacao/').then(response => {
       setPlantacoes(response.data);
@@ -28,21 +24,43 @@ export function useFormSensor(id?: string) {
       Swal.fire('Erro!', 'Não foi possível carregar a lista de plantacoes.', 'error');
     });
 
+    // Se for um modo de edição, carrega o sensor e sua plantação
     if (isEditMode) {
       api.get(`/sensor/${id}`).then(response => {
         const dados = response.data;
         setForm({
           tipoSensor: dados.tipoSensor || '',
           codigo: dados.codigo || '',
-          localizacao: dados.plantacao?.id || '',
+          localizacao: dados.plantacao?.id || '', // Associar a plantação correta
         });
       }).catch(error => {
         console.error(`Erro ao buscar o item do sensor ${id}:`, error);
         Swal.fire('Erro!', 'Não foi possível carregar os dados para edição.', 'error');
-        router.push('/sensor');
+        router.push('/plantacao');
       });
     }
   }, [id, isEditMode, router]);
+
+    const handleDelete = async (id: number) => {
+        const result = await Swal.fire({
+            title: 'Tem certeza?',
+            text: 'Você não poderá reverter esta ação!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sim, excluir!',
+            cancelButtonText: 'Cancelar',
+        });
+
+        if (result.isConfirmed) {
+            api.delete(`/usuario/${id}`).then(() => {
+                Swal.fire('Excluído!', 'O sensor foi removido.', 'success');
+                router.push('/plantacao');
+            }).catch(error => {
+                console.error("Erro ao excluir o item:", error);
+                Swal.fire('Erro!', 'Não foi possível excluir o item.', 'error');
+            });
+        }
+    };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -79,7 +97,7 @@ export function useFormSensor(id?: string) {
         timer: 2000,
         showConfirmButton: false,
       });
-      setTimeout(() => router.push('/sensores'), 1500);
+      setTimeout(() => router.push('/plantacao'), 1500);
     }).catch(error => {
       console.error("Erro ao salvar o item do sensor:", error);
       const errorMessage = error.response?.data?.message || 'Não foi possível salvar o item.';
@@ -88,7 +106,7 @@ export function useFormSensor(id?: string) {
   };
 
   const handleCancel = () => {
-    router.push('/sensores');
+    router.push('/plantacao');
   };
 
   return {
@@ -97,6 +115,7 @@ export function useFormSensor(id?: string) {
     plantacoes,
     handleChange,
     handleSubmit,
+    handleDelete,
     handleCancel,
   };
 }

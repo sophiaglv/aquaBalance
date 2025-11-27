@@ -45,16 +45,16 @@ export function useFormPlantacao(id?: string) {
                         umidadeIdeal: dados.umidadeIdeal || '',
                         temperaturaIdeal: dados.temperaturaIdeal || '',
                         // Pega o ID de dentro do objeto 'propriedade'
-                        idPropriedade: dados.propriedade?.id || '', 
+                        idPropriedade: dados.propriedade?.id || '',
                     });
                 })
                 .catch(error => {
                     console.error(`Erro ao buscar a plantacao ${id}:`, error);
                     Swal.fire('Erro!', 'Não foi possível carregar os dados para edição.', 'error');
-                    router.push('/plantacoes');
+                    router.push('/propriedades');
                 });
         }
-    }, [id, isEditMode, router]); 
+    }, [id, isEditMode, router]);
 
     const handleDelete = async (id: number) => {
         const result = await Swal.fire({
@@ -69,7 +69,7 @@ export function useFormPlantacao(id?: string) {
         if (result.isConfirmed) {
             api.delete(`/plantacao/${id}`).then(() => {
                 Swal.fire('Excluído!', 'A plantacao foi removida.', 'success');
-                router.push('/plantacoes'); 
+                router.push('/propriedades');
             }).catch(error => {
                 console.error("Erro ao excluir o item:", error);
                 Swal.fire('Erro!', 'Não foi possível excluir o item.', 'error');
@@ -116,7 +116,7 @@ export function useFormPlantacao(id?: string) {
                 showConfirmButton: false,
             });
             // Redireciona para a lista
-            setTimeout(() => router.push('/plantacoes'), 1500); // Ajustei o tempo e a rota
+            setTimeout(() => router.push('/propriedades'), 1500); // Ajustei o tempo e a rota
         }).catch(error => {
             console.error("Erro ao salvar o item da plantação:", error);
             const errorMessage = error.response?.data?.message || 'Não foi possível salvar o item.';
@@ -125,16 +125,16 @@ export function useFormPlantacao(id?: string) {
     };
 
     const handleCancel = () => {
-        router.push('/plantacoes');
+        router.push('/propriedades');
     };
 
     return {
         form,
         isEditMode,
-        propriedades, 
+        propriedades,
         handleChange,
         handleSubmit,
         handleCancel,
-        handleDelete 
+        handleDelete
     };
 }

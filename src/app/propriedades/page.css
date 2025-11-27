@@ -1,5 +1,5 @@
 * {
-    box-sizing: border-box; /* Aplica a todos os elementos para evitar o problema de overflow */
+    box-sizing: border-box; 
 }
 
 body {

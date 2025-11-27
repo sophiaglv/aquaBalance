@@ -23,23 +23,7 @@ export function useFormPropriedade(id?: string) {
         }
     }, [id, isEditMode, router]);
 
-    const handleDelete = async (id: number) => {
-        const result = await Swal.fire({
-            title: 'Tem certeza?',
-            text: 'Você não poderá reverter esta ação!',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Sim, excluir!',
-            cancelButtonText: 'Cancelar',
-        });
 
-        if (result.isConfirmed) {
-            api.delete(`/propriedades/${id}`).then(() => {
-                setPropriedades(propriedadesAtuais => propriedadesAtuais.filter(p => p.id !== id));
-                Swal.fire('Excluído!', 'A propriedade foi removida.', 'success').then(() => router.push('/propriedades'));
-            });
-        }
-    };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
@@ -67,5 +51,5 @@ export function useFormPropriedade(id?: string) {
             });
     };
 
-    return { form, isEditMode, handleChange, handleSubmit, handleCancel, handleDelete };
+    return { form, isEditMode, handleChange, handleSubmit, handleCancel };
 }

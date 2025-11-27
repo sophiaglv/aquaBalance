@@ -37,6 +37,7 @@ body {
     padding-bottom: 80px;
     margin: 0;
     position: relative;
+    
 }
 
 .formulario-form {
@@ -51,9 +52,9 @@ body {
     flex-direction: column;
 }
 
-.formulario-input {
+.formulario-perfil {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     width: 70vw;
     height: 30vh;
@@ -62,7 +63,7 @@ body {
     flex-wrap: wrap;
 }
 
-.formulario-input input {
+.formulario-perfil input {
     width: 450px;
     height: 40px;
     border-radius: 20px;
@@ -74,7 +75,7 @@ body {
 
 
 .formulario-button {
-    margin: 25px;
+    margin-top: 35px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -145,13 +146,9 @@ select {
     font-weight: 100;
 }
 
-.formulario-perfil {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 70vw;
-    height: 30vh;
-    margin: 25px;
-    font-weight: 800;
-    flex-wrap: wrap;
+.botao-sair {
+    position: absolute;
+    top: 15px;
+    left: 93%;
+    cursor: pointer;
 }

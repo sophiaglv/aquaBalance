@@ -45,13 +45,15 @@ function PaginaPropriedade() {
 
 
       <footer className="footer">
-        <Image
-          src="/home.png"
-          alt="home"
-          width={50}
-          height={50}
-          className="clique"
-        />
+        <a href="/propriedades">
+          <Image
+            src="/home.png"
+            alt="home"
+            width={50}
+            height={50}
+            className="clique"
+          />
+        </a>
         <Image
           src="/plus.png"
           alt="plus"
@@ -60,13 +62,15 @@ function PaginaPropriedade() {
           className="clique"
           onClick={handleAdd}
         />
-        <Image
-          src="/perfil.png"
-          alt="perfil"
-          width={50}
-          height={50}
-          className="clique"
-        />
+        <a href="/perfil/1">
+          <Image
+            src="/perfil.png"
+            alt="perfil"
+            width={50}
+            height={50}
+            className="clique"
+          />
+        </a>
       </footer>
     </main>
   );
