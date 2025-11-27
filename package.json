@@ -12,6 +12,7 @@
     "next": "15.5.3",
     "react": "19.1.0",
     "react-dom": "19.1.0",
+    "recharts": "^3.5.0",
     "sweetalert2": "^11.26.3"
   },
   "devDependencies": {
@@ -19,6 +20,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/recharts": "^1.8.29",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
