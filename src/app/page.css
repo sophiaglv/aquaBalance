@@ -1,67 +1,450 @@
-body {
-    background-image: url("/fundo.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-color: black;
+body{
+    background-color: #E2F1FF;
 }
 
-.home {
+.tudo{
+    margin: 0px;
+}
+
+.tela1{
+    background-image: url(../../public/fundoTela1.png);
+    width: 100%;
+    height: 850px;
+    display: flex;
+}
+
+.esquerdaTela1{
+    width: 60%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 100vh;
-    width: 100vw;
 }
 
-.home-content {
-    text-align: center;
-    color: white;
-    font-weight: 800;
-}
 
-.home-content h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
-.home-buttons {
-    margin-top: 2rem;
+.titulos1Tela1, .titulos2Tela1{
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    font-weight: 800;
+    gap: 20px;
+    font-size: 4rem;
 }
 
-.button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    padding: 1rem 1rem;
-    border-radius: 5rem;
-    width: 16rem;
-    height: 3rem;
-    text-align: center;
-    font-weight: 800;
-    cursor: pointer;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.titulos1Tela1{
+  margin-top: 70px;  
 }
 
-.button:hover {
-    transform: translateY(-4px);
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.35);
-}
-
-.button:nth-child(1) {
-    background-color: #0097B2;
-    color: white;
-}
-
-.button:nth-child(2) {
-    background-color: #ffffff;
+.palavraAzul{
     color: #0097B2;
+}
+
+.direitaTela1{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.direitaTela1 img{
+    border-radius: 10%;
+    width: 370px;
+}
+
+.button{
+    background-color: #0097B2;
+    padding-block: 5px;
+    padding-inline: 60px;
+    border-radius: 15px;
+    margin: 20px;
+    color: white;
+    font-size: 35px;
+    margin-top: 40px;
+    cursor: pointer;
+    box-shadow: 7px 10px 9px -5px rgba(0,0,0,0.38);
+}
+
+
+
+
+
+
+
+
+
+
+
+.tela2{
+    background-image: url(../../public/fundoTela2.png);
+    width: 100%;
+    height: 650px;
+}
+
+.sombra{
+    width: 100%;
+    height: 650px;
+    background-color: rgba(0, 0, 0, 0.250);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.quadrados{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 90px;
+    flex-wrap: wrap;
+}
+
+.quad1, .quad2, .quad3, .quad4{
+    background-color: rgba(255, 255, 255, 0.780);
+    height: 400px;
+    width: 280px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+.imgQuad{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 180px;
+    width: 200px;
+}
+
+.textoQuad{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 220px;
+}
+
+.textoQuad h1{
+    margin-bottom: 15px;
+    font-size: 20px;
+
+}
+
+
+
+
+
+
+.app{
+    background-image: url(../../public/fundoApp.png);
+    width: 100%;
+    height: 3800px;
+   
+}
+
+.computador1{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 100px;
+}
+
+.frasePromo, .frasePromo2{
+    display: flex;
+    gap: 20px;
+    font-size: 60px;
+    font-weight: 750;
+}
+
+.frasePromo2{
+    margin-bottom: 35px;
+}
+
+.frasePt2{
+    color: black;
+}
+
+.textoEPc1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 98%;
+}
+
+.textoPc{
+    width: 75%;
+    height: 50%;
+    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    white-space: normal;
+    font-size: 30px;
+    padding-left: 50px;
+}
+
+.imagemPc1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -200px;
+    margin-bottom: -200px;
+}
+
+.imagemPc1 img{
+    width: 100%;
+}
+
+
+
+
+
+.caixaFrasePc1{
+    display: flex;
+    justify-content: center;
+    font-family: var(--AOS);
+}
+
+.frasePromo2{
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 90px;
+}
+
+.textoPc2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 270%;
+    font-weight: 500;
+    gap: 5px;
+    width: 50%;
+}
+
+.textoPc2 .frasePt1{
+    padding-left: 8%;
+    padding-right: 13%;
+}
+
+.imagemPc2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35%;
+    margin-left: 10px;
+}
+
+.imagemPc2 img{
+    width: 100%;
+}
+
+
+
+
+.caixaFrasePc2{
+    display: flex;
+    justify-content: center;
+    font-family: var(--AOS);
+}
+
+.imagemPc3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35%;
+}
+
+.imagemPc3 img{
+    width: 100%;
+}
+
+.textoPc3{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    text-align: end;
+    font-size: 270%;
+    font-weight: 500;
+    gap: 5px;
+    width: 50%;
+    padding-right: 120px;
+}
+
+
+
+
+
+
+
+
+
+.caixaFrasePc3{
+    display: flex;
+    justify-content: center;
+    font-family: var(--AOS);
+}
+
+.frasePromo2{
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 90px;
+}
+
+.textoPc4{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 270%;
+    font-weight: 500;
+    gap: 5px;
+    width: 45%;
+}
+
+.textoPc4 .frasePt1{
+    padding-right: 5%;
+    font-weight: 500;
+}
+
+.imagemPc4{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35%;
+    margin-left: 10px;
+}
+
+.imagemPc4 img{
+    width: 85%;
+}
+
+
+
+
+
+
+
+.textoPrincipal {
+  color: black; /* Cor padrão do texto */
+}
+
+.textoDestaque {
+  color: blue; /* Cor da parte da frase que você quer destacar */
+  font-weight: bold; /* Opcional: para dar mais destaque */
+}
+
+
+
+
+
+
+
+
+
+@media (max-width: 1400px) {
+   
+    .quadrados{
+        flex-wrap: wrap;
+        gap: 90px;
+    }
+
+    .quad1, .quad2, .quad3, .quad4{
+        height: 260px;
+        width: 400px;
+    }
+
+    .quad1 img, .quad2 img, .quad3 img, .quad4 img{
+        width: 110px;
+    }
+
+    .textoQuad{
+    width: 300px;
+    margin-bottom: 30px;
+    }
+
+    .textoQuad h1{
+    margin-bottom: 0px;
+    }
+}
+
+@media (max-width: 1100px) {
+
+    .titulos1Tela1, .titulos2Tela1{
+    display: flex;
+    gap: 10px;
+    font-size: 3rem;
+    }
+
+    .quadrados{
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .quad1, .quad2, .quad3, .quad4{
+        height: 260px;
+        width: 350px;
+    }
+
+    .quad1 img, .quad2 img, .quad3 img, .quad4 img{
+        width: 110px;
+    }
+
+    .textoQuad{
+    width: 280px;
+    }
+
+    .textoQuad h1{
+    margin-bottom: 0px;
+    }
+
+    .quad1 img{
+        width: 85px;
+    }
+
+}
+
+@media (max-width: 800px) {
+
+    .titulos1Tela1, .titulos2Tela1{
+    display: flex;
+    gap: 10px;
+    font-size: 2.5rem;
+    }
+
+}
+
+@media (max-width: 750px) {
+   
+    .tela2{
+        background-image: url(../../public/fundoGrandeAdaptado.png);
+        background-position: center;  
+        height: 1400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+   
+    .sombra{
+        height: 100%;
+    }
+
+    .quad1 img{
+        width: 85px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .titulos1Tela1, .titulos2Tela1{
+    display: flex;
+    gap: 10px;
+    font-size: 2rem;
+    }
+
 }

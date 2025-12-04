@@ -1,0 +1,174 @@
+.footer-logo {
+    margin: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #63a355;
+    font-size: 2rem;
+    margin-top: -50px;
+    margin-left: 200px;
+}
+
+.footer-redes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 32px;
+    margin-top: -100px;
+    color: #63a355;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pai{
+    padding: 15px;
+    background-color: white;
+
+    height: 60vh;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    gap: 150px;
+    align-items: center;
+}
+
+.juncao_x {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    font-size: 1rem;
+    color: black;
+    font-weight: 400;
+    margin-left: -100px;
+}
+
+.juncao_x h1{
+    font-weight: 700;
+}
+
+.desc_x {
+    margin: 10px;
+}
+
+.juncao_insta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    font-size: 1rem;
+    color: black;
+    font-weight: 400;
+    margin-left: -85px;
+}
+
+.juncao_insta h1{
+    font-weight: 700;
+}
+
+.desc_insta {
+    margin: 10px;
+}
+
+.questionario {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer_faleconosco {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -120px;
+}
+
+.footer-faleconosco h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #63a355;
+}
+
+textarea {
+    background-color: #f8f8f8;
+    padding: 15px;
+    border-radius: 25px;
+    font-size: 1rem;
+    color: #878787;
+    width: 450px;
+    height: 45px;
+    box-shadow: 7px 10px 9px -5px rgba(0,0,0,0.38);
+}
+
+.questionario {
+    display: flex;
+    gap: 10px;
+}
+
+.questionario button {
+    background-color: #63a355;
+    color: white;
+    border: none;
+    width: 200px;
+    border-radius: 25px;
+    padding: 5px 10px;
+    cursor: pointer;
+    box-shadow: 7px 10px 9px -5px rgba(0,0,0,0.38);
+}
+
+
+@media (max-width: 1400px) {
+
+    .titleValores{
+         font-size: xx-large;
+    }
+    .textosTopo{
+        font-size: 22px;
+    }
+
+    .footer-redes{
+        display: none;
+    }
+ 
+    .footer-logo {
+        margin-left: 15%;
+        margin-top: 0px;
+    }
+
+}
+
+@media (max-width: 900px) {
+   
+    .footer-logo {
+        margin-left: 0px;
+        margin-top: 40px;
+    }
+
+    .titleValores{
+         font-size: xx-large;
+    }
+    .textosTopo{
+        font-size: 22px;
+    }
+
+    .pai{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .footer-faleconosco h1 {
+        margin-top: -150px;
+    }
+ 
+}
