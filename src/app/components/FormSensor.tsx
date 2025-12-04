@@ -5,7 +5,7 @@ import Image from "next/image";
 import "./FormularioSensor.css";
 
 export default function FormularioSensor({ id, propriedadeId }: { id?: string, propriedadeId?: string }) {
-    const { form, isEditMode, plantacoes, handleChange, handleSubmit, handleDelete } = useFormSensor(id);
+    const { form, isEditMode, plantacoes, handleChange, handleSubmit} = useFormSensor(id);
 
     // Filtra as plantações pela propriedadeId, se fornecido
     const plantacoesFiltradas = propriedadeId
@@ -79,15 +79,6 @@ export default function FormularioSensor({ id, propriedadeId }: { id?: string, p
                                 <button type="submit" className="button">
                                     {isEditMode ? 'Salvar' : '+ Adicionar Plantação'}
                                 </button>
-                                {isEditMode && (
-                                    <button
-                                        type="button"
-                                        className="button delete"
-                                        onClick={() => { if (id) handleDelete(Number(id)); }}
-                                    >
-                                        Excluir
-                                    </button>
-                                )}
                             </div>
                         </div>
                     </div>

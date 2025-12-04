@@ -4,6 +4,7 @@ import "./page.css";
 import Image from "next/image";
 import { withAuth } from '../../components/withAuth';
 import './ToggleSwitch.css';
+import api from "../../lib/api";
 
 import { useState, useEffect, JSX } from "react";
 import {
@@ -16,15 +17,23 @@ import {
     ResponsiveContainer
 } from "recharts";
 
+import { usePlantacao } from "@/app/hooks/usePlantacao";
+import CardsSensor from "../../components/CardsSensor";
+  import { useParams } from "next/navigation"
+
 
 interface ChartDataPoint {
     tempo: string;
     valor: number;
 }
 
-function Page(): JSX.Element {
+function PaginaPlantacao(): JSX.Element {
+    const { id } = useParams();
+  
     const [temperatura, setTemperatura] = useState<number>(0);
     const [umidade, setUmidade] = useState<number>(0);
+
+    const { plantacoes, handleAdd } = usePlantacao();
 
     const [dadosTemperatura, setDadosTemperatura] = useState<ChartDataPoint[]>([]);
     const [dadosUmidade, setDadosUmidade] = useState<ChartDataPoint[]>([]);
@@ -73,6 +82,15 @@ function Page(): JSX.Element {
         setIsChecked((prev) => !prev);
     };
 
+    const [plantacao, setPlantacao] = useState<any>(null);
+
+    useEffect(() => {
+        api.get(`/plantacao/${id}`)
+            .then(response => setPlantacao(response.data))
+            .catch(err => console.error("Erro ao carregar plantação:", err));
+    }, [id]);
+
+    if (!plantacao) return <p>Carregando...</p>;
 
     return (
         <section className="todo">
@@ -84,12 +102,16 @@ function Page(): JSX.Element {
                     <section className="tituloEIcones">
 
                         <section className="ptE">
-                            <Image src="/voltaPreto.png" alt="Voltar" width={70} height={70} />
-                            <h1>***Uva***</h1>
+                            <a href="/propriedades">
+                                <Image src="/voltaPreto.png" alt="Voltar" width={20} height={20} className="clique" />
+                            </a>
+                            <h1>{plantacao.cultura}</h1>
                         </section>
 
                         <section className="ptD">
-                            <Image src="/editar.png" alt="Editar" width={50} height={50} />
+                            <a href={`/plantacoes/editar/${id}`}>
+                                <Image src="/editar.png" alt="Editar" width={30} height={30} className="clique" />
+                            </a>
                         </section>
 
                     </section>
@@ -97,15 +119,19 @@ function Page(): JSX.Element {
 
                     <section className="tipoEProp">
 
-                        <section className="tipo">Tipo de cultura: ***Uva verde***</section>
+                        <section>
+                            <p>Tamanho: <b>{plantacao.tamanho}ha</b></p>
+                        </section>
 
-                        <section className="propriedade">Propriedade: ***Fazenda XYZ***</section>
+                        <section className="propriedade">
+                            <p>Propriedade: <b>{plantacao.propriedade?.nomePropriedade}</b></p>
+                        </section>
 
                     </section>
 
                     <section className="desc">
                         <section className="descricao">
-                            <p>Descrição: ***Uva verde docinha, 25 ha***</p>
+                            <p>Descrição: <b>{plantacao.descricao}</b></p>
                         </section>
                     </section>
 
@@ -205,20 +231,17 @@ function Page(): JSX.Element {
                     <h1>Sensores</h1>
                 </section>
                 <section className="caixasSensor">
-
-
-
-
+                    <CardsSensor localizacao={Number(id)} />
                 </section>
                 <section className="botaoAdicionar">
 
-                    <button type="submit">+ Adicionar sensor</button>
+                    <a href="/sensores/cadastro">Adicionar Sensor</a>
 
                 </section>
 
             </section>
 
-        </section>
+        </section >
     );
 }
-export default withAuth(Page);
+export default withAuth(PaginaPlantacao);

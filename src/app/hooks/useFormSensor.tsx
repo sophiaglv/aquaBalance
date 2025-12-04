@@ -14,6 +14,7 @@ export function useFormSensor(id?: string) {
     localizacao: '', // Este campo vai manter o ID da plantação
   });
   const [plantacoes, setPlantacoes] = useState<Plantacao[]>([]);
+  const [plantacaoId, setPlantacaoId] = useState<string>('');
 
   // Carrega as plantações
   useEffect(() => {
@@ -28,15 +29,17 @@ export function useFormSensor(id?: string) {
     if (isEditMode) {
       api.get(`/sensor/${id}`).then(response => {
         const dados = response.data;
+        const idPlantacao = dados.localizacao?.id || '';
+        setPlantacaoId(String(idPlantacao));
         setForm({
           tipoSensor: dados.tipoSensor || '',
           codigo: dados.codigo || '',
-          localizacao: dados.plantacao?.id || '', // Associar a plantação correta
+          localizacao: idPlantacao, // Associar a plantação correta
         });
       }).catch(error => {
         console.error(`Erro ao buscar o item do sensor ${id}:`, error);
         Swal.fire('Erro!', 'Não foi possível carregar os dados para edição.', 'error');
-        router.push('/plantacao');
+        router.push('/plantacoes/');
       });
     }
   }, [id, isEditMode, router]);
@@ -52,9 +55,9 @@ export function useFormSensor(id?: string) {
         });
 
         if (result.isConfirmed) {
-            api.delete(`/usuario/${id}`).then(() => {
+            api.delete(`/sensor/${id}`).then(() => {
                 Swal.fire('Excluído!', 'O sensor foi removido.', 'success');
-                router.push('/plantacao');
+                router.push(`/plantacoes/${plantacaoId}`);
             }).catch(error => {
                 console.error("Erro ao excluir o item:", error);
                 Swal.fire('Erro!', 'Não foi possível excluir o item.', 'error');
@@ -97,7 +100,7 @@ export function useFormSensor(id?: string) {
         timer: 2000,
         showConfirmButton: false,
       });
-      setTimeout(() => router.push('/plantacao'), 1500);
+      setTimeout(() => router.push(`/plantacoes/${idPlantacaoNumerico}`), 1500);
     }).catch(error => {
       console.error("Erro ao salvar o item do sensor:", error);
       const errorMessage = error.response?.data?.message || 'Não foi possível salvar o item.';
@@ -106,7 +109,7 @@ export function useFormSensor(id?: string) {
   };
 
   const handleCancel = () => {
-    router.push('/plantacao');
+    router.push(`/plantacoes/${plantacaoId || form.localizacao}`);
   };
 
   return {

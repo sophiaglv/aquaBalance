@@ -4,7 +4,6 @@ interface CardsProps {
     idPropriedade: number;
 }
 
-import Link from 'next/link';
 import Image from "next/image";
 import "./Cards.css";
 import { useState, useEffect, useRef } from "react";
@@ -114,7 +113,7 @@ export default function Cards({ idPropriedade }: CardsProps) {
                 )}
                 {plantacoesDaPropriedade.map((plantacao) => (
                     <div key={plantacao.id} className="card-content">
-                        <Link href={`/plantacoes/${plantacao.id}`}>
+                        <a href={`/plantacoes/${plantacao.id}`}>
                             <div className="plantacao-item">
                                 <div className="juncao">
                                     <span className='card-icon'>🌿</span>
@@ -122,7 +121,7 @@ export default function Cards({ idPropriedade }: CardsProps) {
                                 </div>
                                 <div className="desc">{plantacao.descricao}</div>
                             </div>
-                        </Link>
+                        </a>
                     </div>
                 ))}
             </div>

@@ -1,0 +1,61 @@
+.cards {
+    flex-direction: column;
+    width: 500px;
+
+    display: flex;
+    color: black;
+    justify-content: center;
+    align-items: flex-start;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 25px;
+    gap: 20px;
+}
+
+.cards > div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+}
+
+.ladoEsquerdoSensor{
+    margin-left: 40px;
+    font-size: large;
+    flex: 1;
+}
+
+.ladoEsquerdoSensor h1{
+    margin-bottom: 8px;
+    font-size: x-large;
+    font-weight: 600;
+}
+
+.ladoDireitoSensor{
+    margin-right: 40px;
+    position: relative;
+}
+
+
+.mini-popup {
+    position: absolute;
+    left: -15px;
+    top: -20px;
+    background: white;
+    color: black;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 10;
+    white-space: nowrap;
+}
+
+.clique{
+    cursor: pointer;
+}

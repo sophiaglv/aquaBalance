@@ -12,7 +12,6 @@ export function usePropriedade() {
 
   useEffect(() => {
     api.get<Propriedade[]>('/propriedades/').then(response => {
-      console.log('Propriedades recebidas:', response.data);
       setPropriedades(response.data);
     })
       .catch((error) => {

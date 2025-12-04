@@ -10,12 +10,13 @@
 
 .ladoDados {
     width: 65%;
+    background-color: white;
 }
 
 .ladoSensor {
     width: 35%;
     background-color: black;
-    background-image: url("/fundoPlantacao.png");
+    background-image: url("/fundo.png");
     background-size: cover;
     background-repeat: no-repeat;
     color: white;
@@ -42,6 +43,7 @@
     align-items: center;
     font-size: 55px;
     margin-left: 75px;
+    gap: 25px;
 }
 
 .ptD {
@@ -56,6 +58,14 @@
     align-items: center;
     gap: 30px;
     margin-left: 100px;
+}
+
+.tipoEProp p, .desc p{
+    font-weight: 600;
+}
+
+.tipoEProp b, .desc b{
+    font-weight: 300;
 }
 
 .desc {
@@ -171,11 +181,8 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.caixasSensor {
-    background-color: rgb(229, 196, 255);
-}
 
-.botaoAdicionar button {
+.botaoAdicionar a {
     background-color: #0097B2;
     color: white;
     font-size: 16px;
@@ -183,4 +190,8 @@
     padding-inline: 50px;
     border-radius: 18px;
     margin-top: 25px;
+}
+
+.clique{
+    cursor: pointer;
 }

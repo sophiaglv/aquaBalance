@@ -53,7 +53,7 @@ export default function FormularioPlantacao({ id }: { id?: string }) {
                                     ))}
                                 </select>
 
-                                <label htmlFor="descricao">Descricao</label>
+                                <label htmlFor="descricao">Descrição</label>
                                 <input type="text" name="descricao" value={form.descricao} onChange={handleChange} required />
                             </div>
                             <div className="separar">

@@ -17,6 +17,7 @@ export function useSensor() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    console.log("chegou aqui");
     Promise.all([
       api.get<Sensor[]>('/sensor/'),
       api.get<Plantacao[]>('/plantacao/')
@@ -25,6 +26,8 @@ export function useSensor() {
       const listaDeSensor = sensoresResponse.data;
       const listaDePlantacoes = plantacoesResponse.data;
 
+      console.log(listaDeSensor);
+
       const sensoresComNomes = listaDeSensor.map(itemDoSensor => {
         const plantacaoCompleto = listaDePlantacoes.find(p => p.id === itemDoSensor.localizacao.id);
         return {
@@ -32,6 +35,7 @@ export function useSensor() {
           localizacao: plantacaoCompleto || itemDoSensor.localizacao 
         };
       });
+      
 
       setSensores(sensoresComNomes as SensorComPlantacao[]);
       
